@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/foodDudeWeb/static/css/main.fbbda150.css",
+    "main.js": "/foodDudeWeb/static/js/main.90c4bab4.js",
+    "static/js/453.2b9430d9.chunk.js": "/foodDudeWeb/static/js/453.2b9430d9.chunk.js",
+    "static/media/SALogo.png": "/foodDudeWeb/static/media/SALogo.60ae52a395d012d9262a.png",
+    "static/media/Mountain.jpg": "/foodDudeWeb/static/media/Mountain.26269665458fac839c35.jpg",
+    "static/media/Lakeview.jpg": "/foodDudeWeb/static/media/Lakeview.dfa1d174ec1fd5a49763.jpg",
+    "static/media/OG.jpg": "/foodDudeWeb/static/media/OG.166013afa104bd84e279.jpg",
+    "static/media/OP.jpg": "/foodDudeWeb/static/media/OP.01bb9545955ba24c6b18.jpg",
+    "static/media/OR.jpg": "/foodDudeWeb/static/media/OR.c58f5fb9414b6adab8b4.jpg",
+    "static/media/Forest.jpg": "/foodDudeWeb/static/media/Forest.770a3a1736785bc111b8.jpg",
+    "static/media/OF.jpg": "/foodDudeWeb/static/media/OF.663c8bdd16e3bafc99a1.jpg",
+    "static/media/Girlswing.jpg": "/foodDudeWeb/static/media/Girlswing.e69f73fc8827d61c54e8.jpg",
+    "static/media/Laptop.jpg": "/foodDudeWeb/static/media/Laptop.0eb3be9018f2e705ba2d.jpg",
+    "static/media/Glacier.jpg": "/foodDudeWeb/static/media/Glacier.276a1f1d218d2576787d.jpg",
+    "static/media/OM.jpg": "/foodDudeWeb/static/media/OM.dfdf17a957357bfab995.jpg",
+    "static/media/OB.jpg": "/foodDudeWeb/static/media/OB.e0555475c9597393c866.jpg",
+    "static/media/OT.jpg": "/foodDudeWeb/static/media/OT.de5af7962d25bb87ea20.jpg",
+    "static/media/OC.jpg": "/foodDudeWeb/static/media/OC.e5d989a989675e7ffdb8.jpg",
+    "static/media/Book.jpg": "/foodDudeWeb/static/media/Book.ce0698f90ee0498330f8.jpg",
+    "index.html": "/foodDudeWeb/index.html",
+    "main.fbbda150.css.map": "/foodDudeWeb/static/css/main.fbbda150.css.map",
+    "main.90c4bab4.js.map": "/foodDudeWeb/static/js/main.90c4bab4.js.map",
+    "453.2b9430d9.chunk.js.map": "/foodDudeWeb/static/js/453.2b9430d9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fbbda150.css",
+    "static/js/main.90c4bab4.js"
+  ]
+}
