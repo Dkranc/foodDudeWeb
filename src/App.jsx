@@ -1,21 +1,20 @@
 import React from "react";
 import Navbar from "./Components/Navbar";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-import ResetPassword from "./pages/ResetPassword";
-import EmailConfirmation from "./pages/EmailConfirmation";
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+import Actions from "./pages/Actions";
 import Home from "./pages/Home";
 
 const App = () => (
   <div className="App">
-    <Router>
+    <BrowserRouter basename="/foodDudeWeb">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/email-confirmation" element={<EmailConfirmation />} />
+        {/* Your Routes */}
+        <Route path="/actions" component={Actions} />
+        {/* Other routes */}
       </Routes>
-    </Router>
+    </BrowserRouter>
   </div>
 );
 

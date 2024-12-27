@@ -1,8 +1,8 @@
 {
   "name": "landingpage",
   "version": "0.1.0",
-  "private": true,
-  "homepage": "https://Dkranc.github.io/foodDudeWeb",
+  "homepage": "https://Dkranc.github.io",
+  "proxy": "http://localhost:3000",
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
