@@ -3,7 +3,6 @@ import "./Pages.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import EmailConfirmation from "./EmailConfirmation";
 import ResetPassword from "./ResetPassword";
-import { supabase } from "../supabase";
 
 const Home = () => {
   const location = useLocation(); // To access the query string
@@ -28,7 +27,6 @@ const Home = () => {
 
     const access_tokenPar = hashParams.get("access_token"); // Example: Get "access_token"
     const refresh_tokenPar = hashParams.get("refresh_token");
-    const expiresAt = hashParams.get("expires_at");
     const error = hashParams.get("error"); // Example: "access_denied"
 
     // Check if either parameter is missing

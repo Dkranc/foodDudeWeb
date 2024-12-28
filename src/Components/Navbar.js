@@ -1,15 +1,25 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
+  const navigate = useNavigate(); // To handle navigation
   return (
     <nav className="navbar">
-      <div className="logo">FoodDude</div>
+      <div className="logo">
+        <button
+          onClick={() => {
+            navigate("/");
+            window.location.reload();
+          }}
+        >
+          FoodDude
+        </button>
+      </div>
       <ul className="nav-links">
-        <li>
+        {/* <li>
           <Link to="/">ראשי</Link>
-        </li>
+        </li> */}
         {/* <li>
           <Link to="/reset-password">Reset Password</Link>
         </li>
