@@ -22,7 +22,6 @@ const ResetPassword = ({
       setError(true);
       setErrorMsg("חלה שגיאה באיפוס הסיסמה, הלינק פג תוקף או כבר היה בשימוש");
     }
-    console.log(accessToken, refreshToken);
   }, [accessToken, refreshToken]);
 
   const resetPasswordWithToken = async (e) => {
@@ -46,29 +45,22 @@ const ResetPassword = ({
       ) {
         throw Error("הסיסמה לא יכולה להיות ריקה, וודאו כי הסיסמאות זהות");
       }
-      // const { data, error } = await supabase.auth.setSession({
-      //   accessToken,
-      //   refreshToken,
-      // });
-
-      // if (error) {
-      //   throw Error("הלינק פג תוקף או לא תקין, נסו לשלוח מייל חוזר");
-      // }
-
-      // const { data: updateData, error: updateError } =
-      //   await supabase.auth.updateUser({
-      //     access_token: accessToken,
-      //     password: password,
-      //   });
-
-      const { error } = await supabase.auth.verifyOtp({
-        type: "recovery",
-        token: accessToken, // The token from the URL
-        password: password, // The new password
+      const { error } = await supabase.auth.setSession({
+        accessToken,
+        refreshToken,
       });
 
       if (error) {
         console.log(error.message);
+        throw Error("הלינק פג תוקף או לא תקין, נסו לשלוח מייל חוזר");
+      }
+
+      const { error: updateError } = await supabase.auth.updateUser({
+        password: password,
+      });
+
+      if (updateError) {
+        console.log(updateError.message);
         throw Error("חלה שגיאה באיפוס הסיסמה");
       }
       setSuccess(true);
