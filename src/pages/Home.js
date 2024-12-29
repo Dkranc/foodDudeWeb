@@ -8,60 +8,33 @@ const Home = () => {
   const location = useLocation(); // To access the query string
   const navigate = useNavigate(); // To handle navigation
   const [action, setAction] = useState(); //
-  const [accessToken, setAccessToken] = useState(); //
-  const [refreshToken, setRefreshToken] = useState(); //
-  const [redirectUrlError, setRedirectUrlError] = useState(false); //
+  const [tokenHash, setTokenHash] = useState(); //
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search); // Parse the query params
-
     // If there are no query parameters (i.e., empty search string)
     if (!location.search) {
       return; // Do nothing if the route is just "/"
     }
-
     const actionPar = queryParams.get("action");
-
-    // Extract hash fragment (after "#")
-    const hashParams = new URLSearchParams(location.hash.slice(1));
-
-    const access_tokenPar = hashParams.get("access_token"); // Example: Get "access_token"
-    const refresh_tokenPar = hashParams.get("refresh_token");
-    const error = hashParams.get("error"); // Example: "access_denied"
+    const tokenHashPar = queryParams.get("token_hash");
 
     // Check if either parameter is missing
     if (!actionPar) {
       navigate("/"); // Redirect to the home page if any param is missing
     }
 
-    if (error) {
-      setRedirectUrlError(true);
+    if (action === "reset_password" && !tokenHashPar) {
+      navigate("/"); // Redirect to the home page if either token is missing
     }
-    if (
-      action === "resetPassword" &&
-      (!access_tokenPar || !refresh_tokenPar) &&
-      error == null
-    ) {
-      navigate("/"); // Redirect to the home page if either access_token or refresh_token is missing
-    }
-
     setAction(actionPar);
-    setAccessToken(access_tokenPar);
-    setRefreshToken(refresh_tokenPar);
+    setTokenHash(tokenHashPar);
   }, [location, navigate, action]); // Dependency on location so it triggers when URL changes
 
   if (action === "verify_email") {
     return <EmailConfirmation setAction={setAction} />;
   } else if (action === "reset_password") {
-    return (
-      <ResetPassword
-        accessToken={accessToken}
-        setAction={setAction}
-        refreshToken={refreshToken}
-        redirectUrlError={redirectUrlError}
-        setRedirectUrlError={setRedirectUrlError}
-      />
-    );
+    return <ResetPassword tokenHash={tokenHash} setAction={setAction} />;
   } else
     return (
       <div className="page home-page">

@@ -3,13 +3,7 @@ import "./Pages.css";
 import { supabase } from "../supabase";
 import { useNavigate } from "react-router-dom";
 
-const ResetPassword = ({
-  setAction,
-  accessToken,
-  refreshToken,
-  redirectUrlError,
-  setRedirectUrlError,
-}) => {
+const ResetPassword = ({ setAction, tokenHash }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(false);
@@ -17,20 +11,12 @@ const ResetPassword = ({
   const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (redirectUrlError) {
-      setError(true);
-      setErrorMsg("חלה שגיאה באיפוס הסיסמה, הלינק פג תוקף או כבר היה בשימוש");
-    }
-  }, [accessToken, refreshToken]);
-
+  const successMsg =
+    "הסיסמה אופסה בהצלחה! חזר ול אפליקציה ובצעו התחברות עם הסיסמה החדשה.";
   const resetPasswordWithToken = async (e) => {
     e.preventDefault();
     try {
-      if (accessToken == null) {
-        throw Error("הלינק לא תקין, נסו לשלוח מייל איפוס חוזר");
-      }
-      if (refreshToken == null) {
+      if (tokenHash == null) {
         throw Error("הלינק לא תקין, נסו לשלוח מייל איפוס חוזר");
       }
 
@@ -45,9 +31,9 @@ const ResetPassword = ({
       ) {
         throw Error("הסיסמה לא יכולה להיות ריקה, וודאו כי הסיסמאות זהות");
       }
-      const { error } = await supabase.auth.setSession({
-        accessToken,
-        refreshToken,
+      const { data, error } = await supabase.auth.verifyOtp({
+        token_hash: tokenHash,
+        type: "email",
       });
 
       if (error) {
@@ -64,6 +50,15 @@ const ResetPassword = ({
         throw Error("חלה שגיאה באיפוס הסיסמה");
       }
       setSuccess(true);
+      setPassword("");
+      setConfirmPassword("");
+      const timer = setTimeout(() => {
+        setAction(""); //Redirect to the home page (or any other page you want)
+        navigate("/");
+      }, 3000);
+
+      // Cleanup the timer when the component unmounts or redirects
+      return () => clearTimeout(timer);
     } catch (error) {
       setError(true);
       setErrorMsg(error.message);
@@ -74,11 +69,12 @@ const ResetPassword = ({
     setError(false);
     setPassword("");
     setConfirmPassword("");
-    if (redirectUrlError) {
-      navigate("/");
-      setRedirectUrlError(false);
-      setAction("");
-    }
+  };
+
+  const closeSuccess = () => {
+    setError(false);
+    navigate("/");
+    setAction("");
   };
 
   //http://localhost:3000/?action=reset_password&token_hash=6b9818e1dbc16ca0444c824059123d3e33dfb9c56353b8b9788e92c0&email=bomb669@gmail.com
@@ -86,10 +82,24 @@ const ResetPassword = ({
     return (
       <div className="modal-overlay">
         <div className="modal">
-          <h2>Password Reset Failed</h2>
+          <h2>איפוס הסיסמה נכשל</h2>
           <p>{message}</p>
           <button onClick={onClose} className="close-button">
-            Close
+            סגירה
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  const PasswordResetSuccessModal = ({ message, onClose }) => {
+    return (
+      <div className="modal-overlay">
+        <div className="modal">
+          <h2>הסיסמה שונתה בהצלחה</h2>
+          <p>{message}</p>
+          <button onClick={onClose} className="close-button">
+            סגירה
           </button>
         </div>
       </div>
@@ -101,7 +111,7 @@ const ResetPassword = ({
       <h1>
         איפוס <span className="highlight">סיסמה</span>
       </h1>
-      {!error ? (
+      {!error && !success ? (
         <>
           {" "}
           <p>הזינו סיסמה חדשה לאפליקציה</p>
@@ -126,8 +136,12 @@ const ResetPassword = ({
             />
             <button type="submit">איפוס סיסמה</button>
           </form>
-          {success && <p>הסיסמה עודכנה בהצלחה</p>}
         </>
+      ) : !error && success ? (
+        <PasswordResetSuccessModal
+          message={successMsg}
+          onClose={closeSuccess}
+        />
       ) : (
         <PasswordResetFailedModal message={errorMsg} onClose={closeError} />
       )}
