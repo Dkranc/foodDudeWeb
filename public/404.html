@@ -1,4 +1,11 @@
 <html>
+  <script>
+    const pathname = window.location.pathname;
+    if (pathname !== "/") {
+      window.location.replace("/");
+      window.location.reload();
+    }
+  </script>
   <head>
     <meta http-equiv="refresh" content="0;url=./index.html" />
   </head>
