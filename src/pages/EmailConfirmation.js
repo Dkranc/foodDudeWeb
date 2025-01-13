@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Pages.css";
+import logo from "../assets/logo.svg";
 
 const EmailConfirmation = ({ setAction }) => {
   const navigate = useNavigate();
@@ -16,14 +16,25 @@ const EmailConfirmation = ({ setAction }) => {
   }, []);
 
   return (
-    <div className="page email-confirmation-page">
-      <h1>Thank You!</h1>
-      <p>
-        Your email has been confirmed. You can now log in and enjoy the
-        experience.
-      </p>
-      <img src="https://source.unsplash.com/800x400/?dessert" alt="Dessert" />
-    </div>
+    <section
+      style={{
+        background: "#FEF9F3",
+        padding: "10%",
+        fontFamily: "'Poppins', sans-serif",
+        height: "800px",
+      }}
+    >
+      <div className="container">
+        <h1 style={{ textAlign: "center", color: "#FECF77" }}>Thank You!</h1>
+        <p style={{ color: "#343434", textAlign: "center" }}>
+          Your email has been confirmed. You can now log in and enjoy the
+          experience.
+        </p>
+        <div className="text-center">
+          <img src={logo} alt="Dessert" />
+        </div>
+      </div>
+    </section>
   );
 };
 

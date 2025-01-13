@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Pages.css";
 import { supabase } from "../supabase";
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/logo.svg";
 
 const ResetPassword = ({ setAction, tokenHash }) => {
   const [password, setPassword] = useState("");
@@ -107,45 +108,88 @@ const ResetPassword = ({ setAction, tokenHash }) => {
   };
 
   return (
-    <div className="page reset-password-page">
-      <h1>
-        איפוס <span className="highlight">סיסמה</span>
-      </h1>
-      {!error && !success ? (
-        <>
+    <section
+      style={{
+        background: "#FEF9F3",
+        height: "100vh", // Full viewport height
+        display: "flex", // Flexbox for alignment
+        justifyContent: "center", // Center horizontally
+        fontFamily: "'Poppins', sans-serif",
+      }}
+    >
+      <div className="container">
+        <div className="row justify-content-center">
           {" "}
-          <p>הזינו סיסמה חדשה לאפליקציה</p>
-          <form className="styled-form" onSubmit={resetPasswordWithToken}>
-            <input
-              dir="rtl"
-              type="password"
-              placeholder="סיסמה חדשה"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
-            <input
-              dir="rtl"
-              type="password"
-              placeholder="אימות סיסמה חדשה"
-              value={confirmPassword}
-              onChange={(e) => {
-                setConfirmPassword(e.target.value);
-              }}
-            />
-            <button type="submit">איפוס סיסמה</button>
-          </form>
-        </>
-      ) : !error && success ? (
-        <PasswordResetSuccessModal
-          message={successMsg}
-          onClose={closeSuccess}
-        />
-      ) : (
-        <PasswordResetFailedModal message={errorMsg} onClose={closeError} />
-      )}
-    </div>
+          {/* Bootstrap utility for horizontal centering */}
+          <div className="col-md-6 col-sm-12">
+            <div className="text-center" style={{ marginTop: "20%" }}>
+              <img src={logo} alt="Dessert" />
+            </div>
+
+            <h1 className="text-center" style={{ marginBottom: "5%" }}>
+              איפוס <span className="highlight">סיסמה</span>
+            </h1>
+            {!error && !success ? (
+              <>
+                <div
+                  style={{
+                    background: "white",
+                    padding: 50,
+                    borderRadius: 20,
+                    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                  }}
+                >
+                  <p className="text-center">הזינו סיסמה חדשה לאפליקציה</p>
+                  <form onSubmit={resetPasswordWithToken}>
+                    <input
+                      dir="rtl"
+                      type="password"
+                      placeholder="סיסמה חדשה"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      className="form-control custom-form mb-10"
+                    />
+                    <input
+                      dir="rtl"
+                      type="password"
+                      placeholder="אימות סיסמה חדשה"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      className="form-control custom-form mb-10"
+                    />
+                    <button
+                      className="btn"
+                      style={{
+                        backgroundColor: "#FECF77",
+                        color: "#54251E",
+                        border: "none",
+                        padding: "10px 20px",
+                        borderRadius: "5px",
+                        fontSize: "16px",
+                        width: "100%",
+                      }}
+                      type="submit"
+                    >
+                      איפוס סיסמה
+                    </button>
+                  </form>
+                </div>
+              </>
+            ) : !error && success ? (
+              <PasswordResetSuccessModal
+                message={successMsg}
+                onClose={closeSuccess}
+              />
+            ) : (
+              <PasswordResetFailedModal
+                message={errorMsg}
+                onClose={closeError}
+              />
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
