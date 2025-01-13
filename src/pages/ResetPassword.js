@@ -91,7 +91,9 @@ const ResetPassword = ({ setAction, tokenHash }) => {
     return (
       <>
         <div className="text-center">
-          <h2 style={{ marginTop: "10%" }}>איפוס הסיסמה נכשל</h2>
+          <h2 style={{ marginTop: "10%", color: "red", marginTop: 20 }}>
+            איפוס הסיסמה נכשל
+          </h2>
           <p>{message}</p>
           <button
             onClick={closeError}
