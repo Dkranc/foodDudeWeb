@@ -16,6 +16,11 @@ const ResetPassword = ({ setAction, tokenHash }) => {
     "הסיסמה אופסה בהצלחה! חזר ול אפליקציה ובצעו התחברות עם הסיסמה החדשה.";
   const resetPasswordWithToken = async (e) => {
     e.preventDefault();
+    const form = e.target;
+    if (!form.checkValidity()) {
+      form.classList.add("was-validated");
+      return;
+    }
     try {
       if (tokenHash == null) {
         setErrorMsg("הלינק לא תקין, נסו לשלוח מייל איפוס חוזר");
@@ -167,12 +172,17 @@ const ResetPassword = ({ setAction, tokenHash }) => {
                   }}
                 >
                   <p className="text-center">הזינו סיסמה חדשה לאפליקציה</p>
-                  <form onSubmit={resetPasswordWithToken}>
+                  <form
+                    noValidate
+                    className="needs-validation"
+                    onSubmit={resetPasswordWithToken}
+                  >
                     <input
                       dir="rtl"
                       type="password"
                       placeholder="סיסמה חדשה"
                       value={password}
+                      required
                       onChange={(e) => setPassword(e.target.value)}
                       className="form-control custom-form mb-10"
                     />
@@ -181,6 +191,7 @@ const ResetPassword = ({ setAction, tokenHash }) => {
                       type="password"
                       placeholder="אימות סיסמה חדשה"
                       value={confirmPassword}
+                      required
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       className="form-control custom-form mb-10"
                     />
