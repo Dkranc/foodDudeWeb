@@ -1,0 +1,53 @@
+@import "bootstrap/scss/bootstrap";
+$primary: #4caf50;
+.custom-form{
+  border: none;
+  border-radius: 0px !important;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10%;
+}
+.contact-text{
+  color: white;
+  margin-left: 10%;
+  text-decoration: none;
+}
+@media (min-width: 1400px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+      max-width: 1417px !important;
+  }
+}
+.active-nav{
+  background: #FECF77;
+  border-radius: 5px;
+  color: #54251E;
+  
+}
+.button-container > a{
+  text-align: left !important;
+  padding:5px 10px !important;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-decoration: none;
+  background: white;
+}
+.button-container > a > img{
+  margin: 0;
+}
+#download{
+  margin-top: 10% !important;
+}
+@media (max-width: 767px) {
+  .remove-position{
+    position: static !important;
+  }
+  .button-container{
+    display: block !important;
+    width: 100% !important;
+  }
+  .button-container >a {
+    margin-top: 10px;
+  }
+  #download{
+    margin-top: 30% !important;
+  }
+}

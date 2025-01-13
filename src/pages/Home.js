@@ -3,6 +3,12 @@ import "./Pages.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import EmailConfirmation from "./EmailConfirmation";
 import ResetPassword from "./ResetPassword";
+import Navbar from "../Components/Navbar";
+import DownloadApp from "../Components/DownloadApp";
+import AboutSection from "../Components/AboutSection";
+import FeaturesSection from "../Components/FeaturesSection";
+import ContactSection from "../Components/ContactSection";
+import Footer from "../Components/Footer";
 
 const Home = () => {
   const location = useLocation(); // To access the query string
@@ -37,17 +43,17 @@ const Home = () => {
     return <ResetPassword tokenHash={tokenHash} setAction={setAction} />;
   } else
     return (
-      <div className="page home-page">
-        <h1>
-          Welcome to <span className="highlight">FoodDude</span>
-        </h1>
-        <p>Your gateway to futuristic food experiences.</p>
-        <div className="hero-section">
-          <img
-            src="https://source.unsplash.com/800x400/?futuristic-food"
-            alt="Futuristic Food"
-          />
-        </div>
+      <div
+        style={{
+          fontFamily: "'Poppins', sans-serif",
+        }}
+      >
+        <Navbar></Navbar>
+        <DownloadApp></DownloadApp>
+        <AboutSection></AboutSection>
+        <FeaturesSection></FeaturesSection>
+        <ContactSection></ContactSection>
+        <Footer></Footer>
       </div>
     );
 };
