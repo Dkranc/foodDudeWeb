@@ -18,9 +18,10 @@ const ResetPassword = ({ setAction, tokenHash }) => {
     e.preventDefault();
     try {
       if (tokenHash == null) {
+        setErrorMsg("הלינק לא תקין, נסו לשלוח מייל איפוס חוזר");
+        setError(true);
         throw Error("הלינק לא תקין, נסו לשלוח מייל איפוס חוזר");
       }
-
       if (
         password !== confirmPassword ||
         password === "" ||
@@ -30,24 +31,27 @@ const ResetPassword = ({ setAction, tokenHash }) => {
         password.length > 128 ||
         confirmPassword.length > 128
       ) {
+        setErrorMsg("הסיסמה לא יכולה להיות ריקה, וודאו כי הסיסמאות זהות");
+        setError(true);
         throw Error("הסיסמה לא יכולה להיות ריקה, וודאו כי הסיסמאות זהות");
       }
       const { data, error } = await supabase.auth.verifyOtp({
         token_hash: tokenHash,
         type: "email",
       });
-
       if (error) {
         console.log(error.message);
+        setErrorMsg("הלינק פג תוקף או לא תקין, נסו לשלוח מייל חוזר");
+        setError(true);
         throw Error("הלינק פג תוקף או לא תקין, נסו לשלוח מייל חוזר");
       }
-
       const { error: updateError } = await supabase.auth.updateUser({
         password: password,
       });
-
       if (updateError) {
         console.log(updateError.message);
+        setErrorMsg("חלה שגיאה באיפוס הסיסמה");
+        setError(true);
         throw Error("חלה שגיאה באיפוס הסיסמה");
       }
       setSuccess(true);
@@ -57,7 +61,6 @@ const ResetPassword = ({ setAction, tokenHash }) => {
         setAction(""); //Redirect to the home page (or any other page you want)
         navigate("/");
       }, 3000);
-
       // Cleanup the timer when the component unmounts or redirects
       return () => clearTimeout(timer);
     } catch (error) {
@@ -73,7 +76,7 @@ const ResetPassword = ({ setAction, tokenHash }) => {
   };
 
   const closeSuccess = () => {
-    setError(false);
+    setSuccess(false);
     navigate("/");
     setAction("");
   };
@@ -81,28 +84,52 @@ const ResetPassword = ({ setAction, tokenHash }) => {
   //http://localhost:3000/?action=reset_password&token_hash=6b9818e1dbc16ca0444c824059123d3e33dfb9c56353b8b9788e92c0&email=bomb669@gmail.com
   const PasswordResetFailedModal = ({ message, onClose }) => {
     return (
-      <div className="modal-overlay">
-        <div className="modal">
-          <h2>איפוס הסיסמה נכשל</h2>
+      <>
+        <div className="text-center">
+          <h2 style={{ marginTop: "10%" }}>איפוס הסיסמה נכשל</h2>
           <p>{message}</p>
-          <button onClick={onClose} className="close-button">
+          <button
+            onClick={closeError}
+            className="btn"
+            style={{
+              backgroundColor: "#FECF77",
+              color: "#54251E",
+              border: "none",
+              padding: "10px 20px",
+              borderRadius: "5px",
+              fontSize: "16px",
+              width: "100%",
+            }}
+          >
             סגירה
           </button>
         </div>
-      </div>
+      </>
     );
   };
 
   const PasswordResetSuccessModal = ({ message, onClose }) => {
     return (
-      <div className="modal-overlay">
-        <div className="modal">
-          <h2>הסיסמה שונתה בהצלחה</h2>
-          <p>{message}</p>
-          <button onClick={onClose} className="close-button">
-            סגירה
-          </button>
-        </div>
+      <div className="text-center">
+        <h2 style={{ marginTop: "5%", color: "#26b726" }}>
+          הסיסמה שונתה בהצלחה
+        </h2>
+        <p>{message}</p>
+        <button
+          onClick={closeSuccess}
+          className="btn"
+          style={{
+            backgroundColor: "#FECF77",
+            color: "#54251E",
+            border: "none",
+            padding: "10px 20px",
+            borderRadius: "5px",
+            fontSize: "16px",
+            width: "100%",
+          }}
+        >
+          סגירה
+        </button>
       </div>
     );
   };
