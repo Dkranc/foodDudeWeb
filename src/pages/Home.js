@@ -48,7 +48,7 @@ const Home = () => {
           fontFamily: "'Poppins', sans-serif",
         }}
       >
-        <Navbar></Navbar>
+        <Navbar showMenu={true} />
         <DownloadApp></DownloadApp>
         <AboutSection></AboutSection>
         <FeaturesSection></FeaturesSection>
