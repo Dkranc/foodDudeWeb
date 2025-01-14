@@ -137,8 +137,8 @@ const ContactSection = () => {
               <div
                 style={{
                   position: "absolute",
-                  top: "-20px",
-                  left: "-20px",
+                  top: "-15px",
+                  right: "-1%",
                   width: "40px",
                   height: "40px",
                   backgroundColor: "#FECF77",
@@ -152,7 +152,7 @@ const ContactSection = () => {
               style={{
                 position: "absolute",
                 top: "-20px",
-                right: "0px",
+                left: "0px",
                 height: "100%",
                 width: "46%",
               }}

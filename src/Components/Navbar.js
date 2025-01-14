@@ -46,6 +46,7 @@ const Navbar = () => {
     <nav
       style={{ position: "fixed", top: 0, zIndex: 200, width: "100%" }}
       className="navbar navbar-expand-lg navbar-light bg-white shadow-sm"
+      dir="rtl" // Set RTL direction
     >
       <div className="container">
         {/* Logo Section */}
@@ -67,7 +68,9 @@ const Navbar = () => {
         <div
           className={`collapse navbar-collapse ${isMenuOpen ? "show" : ""}`} // Show/Hide menu on small screens
         >
-          <div className="navbar-nav ms-auto">
+          <div className="navbar-nav me-auto">
+            {" "}
+            {/* Adjust alignment for RTL */}
             <button
               className={`nav-link text-dark ${
                 activeSection === "download" ? "active-nav" : ""

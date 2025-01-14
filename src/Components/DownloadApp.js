@@ -37,7 +37,7 @@ const DownloadApp = () => {
                 href="https://play.google.com/store"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-light d-flex align-items-center justify-content-center me-md-3"
+                className="btn btn-light d-flex align-items-center justify-content-center "
               >
                 <img
                   src={GooglePlaylogo}
@@ -55,7 +55,7 @@ const DownloadApp = () => {
                 href="https://www.apple.com/app-store/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-light d-flex align-items-center justify-content-center"
+                className="btn btn-light d-flex align-items-center justify-content-center me-md-3"
               >
                 <img
                   src={Applelogo}
