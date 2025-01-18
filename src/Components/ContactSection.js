@@ -19,22 +19,28 @@ const ContactSection = () => {
           {/* Left Section - Contact Form */}
           <div className="col-md-6 col-sm-12">
             <div style={{ margin: "10%" }}>
-              <h6 style={{ color: "#ffa500", textTransform: "uppercase" }}>
-                Contact us
+              <h6
+                style={{
+                  color: "#ffa500",
+                  textTransform: "uppercase",
+                  fontWeight: "bold",
+                }}
+              >
+                צרו קשר
               </h6>
               <h2 style={{ fontSize: "36px", fontWeight: "bold" }}>
-                Get in touch
+                זמינים בכל נושא
               </h2>
               <p style={{ fontSize: "16px", color: "#555" }}>
-                Feel free to contact us any time. We will get back to you as
-                soon as we can!
+                תרגישו חופשי לפנות אלינו בכל נושא, אנו נעשה ממץ מירבי כדי לחזור
+                אליכם בהקדם!
               </p>
               <form>
                 <div className="mb-3">
                   <input
                     type="text"
                     id="name"
-                    placeholder="Name"
+                    placeholder="שם מלא"
                     className="form-control custom-form"
                   />
                 </div>
@@ -42,7 +48,7 @@ const ContactSection = () => {
                   <input
                     type="email"
                     id="email"
-                    placeholder="Email"
+                    placeholder={`דוא"ל`}
                     className="form-control custom-form"
                   />
                 </div>
@@ -50,7 +56,7 @@ const ContactSection = () => {
                   <input
                     type="text"
                     id="phone"
-                    placeholder="Phone"
+                    placeholder="מספר נייד"
                     className="form-control custom-form"
                   />
                 </div>
@@ -58,7 +64,7 @@ const ContactSection = () => {
                   <textarea
                     id="message"
                     rows="4"
-                    placeholder="Message"
+                    placeholder="במה נוכל לסייע?"
                     className="form-control custom-form"
                   ></textarea>
                 </div>
@@ -73,9 +79,10 @@ const ContactSection = () => {
                     borderRadius: "5px",
                     fontSize: "16px",
                     width: "100%",
+                    fontWeight: "bold",
                   }}
                 >
-                  Send
+                  שלח
                 </button>
               </form>
             </div>
@@ -90,19 +97,20 @@ const ContactSection = () => {
                 padding: "30px",
                 borderRadius: "10px",
                 zIndex: 20,
+                width: "50%",
               }}
               className="position-absolute remove-position"
             >
               <h3 style={{ fontWeight: "bold", marginBottom: "20px" }}>
-                Info us
+                פרטי התקשרות
               </h3>
               <div className="d-flex flex-row justify-content-start align-items-center mt-3 mb-3">
                 <img style={{ width: 30, margin: 0 }} src={mail}></img>
                 <a
                   className="contact-text ml-5"
-                  href="mailto:info@fooddude.com"
+                  href="mailto:main@food-dude.net"
                 >
-                  info@fooddude.com
+                  main@food-dude.net
                 </a>
               </div>
               <div className="d-flex flex-row justify-content-start align-items-center mt-5 mb-3">
@@ -111,7 +119,7 @@ const ContactSection = () => {
                   className="contact-text ml-5"
                   href="mailto:info@fooddude.com"
                 >
-                  +1 123 4567 891
+                  לא זמין בשלב זה
                 </a>
               </div>
               <div className="d-flex flex-row justify-content-start align-items-center mt-5 mb-3">
@@ -120,7 +128,7 @@ const ContactSection = () => {
                   className="contact-text ml-5"
                   href="mailto:info@fooddude.com"
                 >
-                  14 Green Road St., near Crystal Tower, Jerusalem, Israel
+                  שכונת רחביה, ירושלים, ישראל
                 </a>
               </div>
               <div className="d-flex flex-row justify-content-start align-items-center mt-5 mb-3">

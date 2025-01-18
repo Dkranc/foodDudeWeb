@@ -27,8 +27,8 @@ const EmailConfirmation = ({ setAction }) => {
       <div className="container">
         <h1 style={{ textAlign: "center", color: "#FECF77" }}>Thank You!</h1>
         <p style={{ color: "#343434", textAlign: "center" }}>
-          Your email has been confirmed. You can now log in and enjoy the
-          experience.
+          כתובת המייל אומתה. אתם יכולים לגשת לאפליקציה ולבצע התחברות. בהצלחה,
+          ובתיאבון
         </p>
         <div className="text-center">
           <img src={logo} alt="Dessert" />

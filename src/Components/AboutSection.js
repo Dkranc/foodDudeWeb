@@ -20,7 +20,7 @@ const AboutSection = () => {
           {/* Right Section (Text) */}
           <div className="col-md-6">
             <h6 style={{ color: "#ffa500", textTransform: "uppercase" }}>
-              About us
+              קצת עלינו
             </h6>
             <h2
               style={{
@@ -29,17 +29,18 @@ const AboutSection = () => {
                 margin: "10px 0",
               }}
             >
-              What We Offer?
+              מה אנחנו מציעים בעצם?
             </h2>
             <p style={{ fontSize: "16px", lineHeight: "1.8", color: "#555" }}>
-              Fooddude gives perfect solutions for all kinds of coupons and
-              deals on this site that you can use to build your successful
-              coupon, deals, & discount affiliate website and make money with
-              it.
+              FoodDude מציעה ללקוחותיה להשתתף בהגרלה מדי שבוע, ולזכות בקופונים
+              והטבות למסעדות שאתם הכי אוהבים! נכנסים לאפליקציה, מצטרפים להגרלה
+              .השבועית, זוכים בפרסים מדי שבוע ונהנים מאוכל איכותי בעזרת
+              האפלקיציה
             </p>
             <p style={{ fontSize: "16px", lineHeight: "1.8", color: "#555" }}>
-              Fooddude is a powerful coupon app. You can easily set up and
-              customize your own coupon site using this app.
+              FoodDude קלה מאוד לשימוש. מורידים את האפליקציה, צופים בסרטון
+              השבועי, מצטרפים להגרלה וזוכים בפרסים! וכל זה ללא עלות! לא עכשיו ,
+              ולא אף פעם!
             </p>
             <p
               style={{
@@ -49,7 +50,7 @@ const AboutSection = () => {
                 marginTop: "20px",
               }}
             >
-              Join With Us and Discover What’s Out There
+              הצטרפו עוד היום ותהנו ממגוון הטבות ופרסים מטריפים
             </p>
           </div>
         </div>

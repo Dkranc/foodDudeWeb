@@ -27,58 +27,57 @@ const ResetPassword = ({ setAction, tokenHash }) => {
       form.classList.add("was-validated");
       return;
     }
-    setSuccess(true);
-    // try {
-    //   if (tokenHash == null) {
-    //     setErrorMsg("הלינק לא תקין, נסו לשלוח מייל איפוס חוזר");
-    //     setError(true);
-    //     throw Error("הלינק לא תקין, נסו לשלוח מייל איפוס חוזר");
-    //   }
-    //   if (
-    //     password !== confirmPassword ||
-    //     password === "" ||
-    //     confirmPassword === "" ||
-    //     password.length < 6 ||
-    //     confirmPassword.length < 6 ||
-    //     password.length > 128 ||
-    //     confirmPassword.length > 128
-    //   ) {
-    //     setErrorMsg("הסיסמה לא יכולה להיות ריקה, וודאו כי הסיסמאות זהות");
-    //     setError(true);
-    //     throw Error("הסיסמה לא יכולה להיות ריקה, וודאו כי הסיסמאות זהות");
-    //   }
-    //   const { data, error } = await supabase.auth.verifyOtp({
-    //     token_hash: tokenHash,
-    //     type: "email",
-    //   });
-    //   if (error) {
-    //     console.log(error.message);
-    //     setErrorMsg("הלינק פג תוקף או לא תקין, נסו לשלוח מייל חוזר");
-    //     setError(true);
-    //     throw Error("הלינק פג תוקף או לא תקין, נסו לשלוח מייל חוזר");
-    //   }
-    //   const { error: updateError } = await supabase.auth.updateUser({
-    //     password: password,
-    //   });
-    //   if (updateError) {
-    //     console.log(updateError.message);
-    //     setErrorMsg("חלה שגיאה באיפוס הסיסמה");
-    //     setError(true);
-    //     throw Error("חלה שגיאה באיפוס הסיסמה");
-    //   }
-    //   setSuccess(true);
-    //   setPassword("");
-    //   setConfirmPassword("");
-    //   const timer = setTimeout(() => {
-    //     setAction(""); //Redirect to the home page (or any other page you want)
-    //     navigate("/");
-    //   }, 3000);
-    //   // Cleanup the timer when the component unmounts or redirects
-    //   return () => clearTimeout(timer);
-    // } catch (error) {
-    //   setError(true);
-    //   setErrorMsg(error.message);
-    // }
+    try {
+      if (tokenHash == null) {
+        setErrorMsg("הלינק לא תקין, נסו לשלוח מייל איפוס חוזר");
+        setError(true);
+        throw Error("הלינק לא תקין, נסו לשלוח מייל איפוס חוזר");
+      }
+      if (
+        password !== confirmPassword ||
+        password === "" ||
+        confirmPassword === "" ||
+        password.length < 6 ||
+        confirmPassword.length < 6 ||
+        password.length > 128 ||
+        confirmPassword.length > 128
+      ) {
+        setErrorMsg("הסיסמה לא יכולה להיות ריקה, וודאו כי הסיסמאות זהות");
+        setError(true);
+        throw Error("הסיסמה לא יכולה להיות ריקה, וודאו כי הסיסמאות זהות");
+      }
+      const { data, error } = await supabase.auth.verifyOtp({
+        token_hash: tokenHash,
+        type: "email",
+      });
+      if (error) {
+        console.log(error.message);
+        setErrorMsg("הלינק פג תוקף או לא תקין, נסו לשלוח מייל חוזר");
+        setError(true);
+        throw Error("הלינק פג תוקף או לא תקין, נסו לשלוח מייל חוזר");
+      }
+      const { error: updateError } = await supabase.auth.updateUser({
+        password: password,
+      });
+      if (updateError) {
+        console.log(updateError.message);
+        setErrorMsg("חלה שגיאה באיפוס הסיסמה");
+        setError(true);
+        throw Error("חלה שגיאה באיפוס הסיסמה");
+      }
+      setSuccess(true);
+      setPassword("");
+      setConfirmPassword("");
+      const timer = setTimeout(() => {
+        setAction(""); //Redirect to the home page (or any other page you want)
+        navigate("/");
+      }, 3000);
+      // Cleanup the timer when the component unmounts or redirects
+      return () => clearTimeout(timer);
+    } catch (error) {
+      setError(true);
+      setErrorMsg(error.message);
+    }
   };
 
   const closeError = () => {
@@ -170,27 +169,20 @@ const ResetPassword = ({ setAction, tokenHash }) => {
             {" "}
             {/* Bootstrap utility for horizontal centering */}
             <div className="col-md-6 col-sm-12">
-              {/* <div className="text-center" style={{ marginTop: "20%" }}>
-              <img src={logo} alt="Dessert" />
-            </div> */}
-
-              <h1
-                className="text-center"
-                style={{ marginBottom: "5%", marginTop: 200 }}
-              >
-                איפוס <span className="highlight">סיסמה</span>
-              </h1>
               {!error && !success ? (
                 <>
                   <div
                     style={{
                       background: "white",
+                      marginTop: 180,
                       padding: 50,
                       borderRadius: 20,
                       boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
                     }}
                   >
-                    <p className="text-center">הזינו סיסמה חדשה לאפליקציה</p>
+                    <h1 className="text-center" style={{ marginBottom: "5%" }}>
+                      איפוס <span className="highlight">סיסמה</span>
+                    </h1>
                     <form
                       noValidate
                       className="needs-validation"

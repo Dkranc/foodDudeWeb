@@ -25,16 +25,19 @@ const DownloadApp = () => {
         <div className="row align-items-center">
           <div className="col-md-6 col-sm-12">
             <h1 className="display-4 fw-bold">
-              Enjoy Your <span className="text-warning">Delicious Food</span>
+              המקום לזכות בהטבות{" "}
+              <span className="text-warning">למקומות שאתם הכי אוהבים</span>
             </h1>
             <p className="lead text-muted">
-              We will fill your tummy with delicious food with exciting{" "}
-              <span className="fw-bold">coupons</span>
+              תוכלו למצוא אצלנו הטבות למגוון מסעדות, ולזכות בפרסים
+              <span className="fw-bold"> בכל שבוע!</span>
+              {"\n"} בכל שבוע, יוגרלו מספר ארוחות חינם במסעדה השבועית, ויחולקו
+              הטבות שונות גם לאלו שלא יזכו בפרס הגדול
             </p>
 
             <div className="d-flex button-container mt-4">
               <a
-                href="https://play.google.com/store"
+                href="https://onelink.to/73hfvc"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-light d-flex align-items-center justify-content-center "
@@ -52,7 +55,7 @@ const DownloadApp = () => {
               </a>
 
               <a
-                href="https://www.apple.com/app-store/"
+                href="https://onelink.to/73hfvc"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-light d-flex align-items-center justify-content-center me-md-3"

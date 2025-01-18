@@ -69,14 +69,14 @@ const Navbar = ({ showMenu }) => {
           <div
             className={`collapse navbar-collapse ${isMenuOpen ? "show" : ""}`} // Show/Hide menu on small screens
           >
-            <div className="navbar-nav me-auto">
+            <div className="navbar-nav me-auto" style={{ fontWeight: "bold" }}>
               <button
                 className={`nav-link text-dark ${
                   activeSection === "download" ? "active-nav" : ""
                 }`}
                 onClick={() => handleScrollTo("download")}
               >
-                Download the app
+                הורידו את האפליקציה{" "}
               </button>
               <button
                 className={`nav-link text-dark ${
@@ -84,7 +84,7 @@ const Navbar = ({ showMenu }) => {
                 }`}
                 onClick={() => handleScrollTo("about")}
               >
-                About Us
+                אודות
               </button>
               <button
                 className={`nav-link text-dark ${
@@ -92,7 +92,7 @@ const Navbar = ({ showMenu }) => {
                 }`}
                 onClick={() => handleScrollTo("features")}
               >
-                Features of the App
+                איך זה עובד
               </button>
               <button
                 className={`nav-link text-dark ${
@@ -100,7 +100,7 @@ const Navbar = ({ showMenu }) => {
                 }`}
                 onClick={() => handleScrollTo("contact")}
               >
-                Contact Us
+                צור קשר
               </button>
             </div>
           </div>

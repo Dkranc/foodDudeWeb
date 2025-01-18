@@ -10,23 +10,23 @@ const FeaturesSection = () => {
   const features = [
     {
       icon: SignUpIcon,
-      title: "Sign up in app",
+      title: "מורידים את האפליקציה ונרשמים בחינם",
     },
     {
       icon: VideoIcon,
-      title: "View weekly video",
+      title: "תכירו את המסעדה המוצגת השבוע בסרטון",
     },
     {
       icon: RaffleIcon,
-      title: "Join weekly raffle",
+      title: "נרשמים להגרלה השבועית",
     },
     {
       icon: PrizesIcon,
-      title: "Win prizes",
+      title: "זוכים בארוחה חינם או בהטבות אחרות בכל שבוע",
     },
     {
       icon: RestaurantIcon,
-      title: "Use prizes in restaurants",
+      title: "משתמשים בפרסים במסעדה",
     },
   ];
 
@@ -55,11 +55,13 @@ const FeaturesSection = () => {
       />
       <div className="container-fluid">
         {/* Section Header */}
-        <h6 style={{ color: "#ffa500", textTransform: "uppercase" }}>
-          Features of the app
+        <h6
+          style={{ color: "#ffa500", textTransform: "uppercase", fontSize: 20 }}
+        >
+          איך השירות עובד?
         </h6>
         <h2 style={{ fontSize: "36px", fontWeight: "bold", margin: "10px 0" }}>
-          Our Best App Feature
+          עוקבים אחרי השלבים הפשוטים, ונהנים מהטבות למסעדות הכי מדוברות
         </h2>
 
         {/* Features List */}
@@ -98,7 +100,7 @@ const FeaturesSection = () => {
                 <p
                   style={{
                     fontSize: "14px",
-                    fontWeight: "500",
+                    fontWeight: "bold",
                     color: "#555",
                     marginTop: "15px",
                   }}
