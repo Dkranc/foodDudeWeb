@@ -1,8 +1,9 @@
 {
   "files": {
     "main.css": "/static/css/main.c7460e6e.css",
-    "main.js": "/static/js/main.29ecd44e.js",
+    "main.js": "/static/js/main.4270be79.js",
     "static/js/952.431fa550.chunk.js": "/static/js/952.431fa550.chunk.js",
+    "static/media/banner2.svg": "/static/media/banner2.790e5722cd0e81b44622332aeb33e391.svg",
     "static/media/banner.svg": "/static/media/banner.bb3860db9eab4fbf1ae1f44b0e191d48.svg",
     "static/media/logo.svg": "/static/media/logo.c9dc0ff73a42e74bb960fdb44420f0f6.svg",
     "static/media/about.png": "/static/media/about.88061da6342938487778.png",
@@ -10,11 +11,11 @@
     "static/media/Applelogo.svg": "/static/media/Applelogo.c6e38fabfce8db34e79ab5611ff51f6d.svg",
     "index.html": "/index.html",
     "main.c7460e6e.css.map": "/static/css/main.c7460e6e.css.map",
-    "main.29ecd44e.js.map": "/static/js/main.29ecd44e.js.map",
+    "main.4270be79.js.map": "/static/js/main.4270be79.js.map",
     "952.431fa550.chunk.js.map": "/static/js/952.431fa550.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c7460e6e.css",
-    "static/js/main.29ecd44e.js"
+    "static/js/main.4270be79.js"
   ]
 }
