@@ -35,27 +35,35 @@ const ContactSection = () => {
                 תרגישו חופשי לפנות אלינו בכל נושא, אנו נעשה ממץ מירבי כדי לחזור
                 אליכם בהקדם!
               </p>
-              <form>
+              <form
+                action="https://formsubmit.co/f920e231241ee005f12a220119ebd56c "
+                method="POST"
+              >
                 <div className="mb-3">
                   <input
                     type="text"
                     id="name"
+                    name="name"
                     placeholder="שם מלא"
                     className="form-control custom-form"
+                    required
                   />
                 </div>
                 <div className="mb-3">
                   <input
                     type="email"
                     id="email"
+                    name="email"
                     placeholder={`דוא"ל`}
                     className="form-control custom-form"
+                    required
                   />
                 </div>
                 <div className="mb-3">
                   <input
                     type="text"
                     id="phone"
+                    name="phone"
                     placeholder="מספר נייד"
                     className="form-control custom-form"
                   />
@@ -63,9 +71,11 @@ const ContactSection = () => {
                 <div className="mb-3">
                   <textarea
                     id="message"
+                    name="message"
                     rows="4"
                     placeholder="במה נוכל לסייע?"
                     className="form-control custom-form"
+                    required
                   ></textarea>
                 </div>
                 <button
