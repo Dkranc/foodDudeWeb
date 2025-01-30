@@ -1,5 +1,6 @@
 import React from "react";
 import CouponImage from "../assets/about.png"; // Replace with your actual image path
+import RestSearchSection from "../Components/RestSearchSection";
 
 const AboutSection = () => {
   return (
@@ -55,6 +56,7 @@ const AboutSection = () => {
           </div>
         </div>
       </div>
+      <RestSearchSection />
     </section>
   );
 };
