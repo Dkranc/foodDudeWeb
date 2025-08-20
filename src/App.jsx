@@ -3,6 +3,7 @@ import Navbar from "./Components/Navbar";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Home from "./pages/Home";
+//just a commit test
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         </Routes>
       </BrowserRouter>
     </div>
+    
   );
 };
 
